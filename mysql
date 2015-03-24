@@ -82,6 +82,13 @@ UPDATE mytable SET name = LOWER(name);
 UPDATE mytable SET name = UPPER(name);
 
 
+Backup 
+mysqldump -u USERNAME -pPASSWORD  OLD_DRUPAL_DB_NAME > new_drupal.sql
+
+Restore
+mysql -u USERNAME -pPASSWORD  DATABASE_NAME < new_database.sql
+
+
 
 
 
