@@ -1,5 +1,39 @@
-openssl genrsa -des3 -out example.com.key 1024
-openssl req -new -key example.com.key -out newmaple.csr
-openssl x509 -req -days 365 -in newmaple.csr -signkey example.com.key -out example.com.com.crt
+openssl genrsa -out ca.key 2048
+openssl req -new -key ca.key -out ca.csr
+openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
+
+cp ca.key /var/www/example.com/ssl 
+cp ca.crt /var/www/example.com/ssl
 
 a2enmod ssl
+
+<VirtualHost *:80>
+    ServerName example.com
+#    ServerAlias www.example.com
+    DocumentRoot /var/www/example.com/public_html
+    ErrorLog /var/www/example.com/logs/error.log
+    CustomLog /var/www/example.com/logs/access.log combined
+    ErrorDocument 404 "Fuck"
+    <Directory /var/www/example.com/public_html>
+        AuthType Basic
+        AuthName "Secure Content"
+        AuthBasicProvider file
+        AuthUserFile /etc/apache2/passwords
+        Require valid-user
+    </Directory>
+
+</VirtualHost>
+
+
+
+
+<VirtualHost *:443>
+        SSLEngine on
+        SSLCertificateFile /var/www/example.com/ssl/ca.crt
+        SSLCertificateKeyFile /var/www/example.com/ssl/ca.crt
+#        SSLCertificateChainFile /etc/apache2/exmaple.crt
+        ServerName example.com
+        DocumentRoot /var/www/example.com/public_html
+        ErrorLog /var/www/example.com/logs/ssl_error.log
+        CustomLog /var/www/example.com/logs/ssl_access.log common
+</VirtualHost>
