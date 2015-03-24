@@ -1,0 +1,2 @@
+check file lsattr
+change option chattr -i 

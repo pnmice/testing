@@ -1,0 +1,3 @@
+if need global vim /etc/login.def 	
+if need turn on vim /etc/pam.d/common-session session optional pam_umask.so			
+chfn --other='umask=002' username or root						

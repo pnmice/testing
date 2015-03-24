@@ -1,0 +1,11 @@
+vim /etc/logrotate.conf	
+
+/var/log/btmp {
+    minsize 200M
+    missingok
+    monthly
+    create 0660 root utmp
+    rotate 1
+}
+
+check configuration logrotate /etc/logrotate.conf

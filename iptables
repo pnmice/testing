@@ -1,0 +1,8 @@
+#ignore icmp
+
+iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
+iptables -A OUTPUT -p icmp --icmp-type echo-reply -j DROP
+
+
+#block traffic from IP
+iptables -A INPUT -s IP-ADDRESS -j DROP

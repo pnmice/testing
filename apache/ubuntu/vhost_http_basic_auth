@@ -1,0 +1,26 @@
+<VirtualHost *:80>
+    ServerName example.com
+#    ServerAlias www.example.com
+    DocumentRoot /var/www/example.com/public_html
+    ErrorLog /var/www/example.com/error.log
+    CustomLog /var/www/example.com/access.log combined
+    <Directory /var/www/example.com/public_html>
+  	AuthType Basic
+  	AuthName "Secure Content"
+  	AuthBasicProvider file
+  	AuthUserFile /etc/apache2/passwords
+  	Require valid-user
+    </Directory>     
+
+</VirtualHost>
+
+
+
+
+a2enmod auth_basic
+a2enmod authn_file
+a2enmod authz_user
+
+htpasswd -c /etc/apache2/passwords user1
+htpasswd /etc/apache2/passwords user2
+

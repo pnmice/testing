@@ -1,0 +1,91 @@
+
+sh mysql.sh root newpassword
+
+create mysql.sh
+#!/bin/sh
+
+# Kill any mysql processes currently running
+echo 'Shutting down any mysql processes...'
+killall -vw mysqld
+
+# Start mysql without grant tables
+mysqld_safe --skip-grant-tables &
+
+echo 'Resetting password...'
+
+#Sleep for 5 while the new mysql process loads (if get a connection error you might need to increase this.
+sleep 5
+
+#Update user with new password
+mysql mysql -e "UPDATE user SET Password=PASSWORD('$2') WHERE User='$1';FLUSH PRIVILEGES;"
+
+echo 'Cleaning up..'
+
+#Kill the insecure mysql process
+killall -v mysqld
+
+
+
+show databases;     #see database
+use databasename;   #choose database 
+show tables;        #see tables
+
+
+ALTER TABLE moneytabletest MODIFY moneyfield fixed(10,2);
+
+If your table has these characteristics
+
+table is called moneytable
+field you wish to convert is called moneyfield
+primary key is called moneyid
+Then run these commands:
+
+DROP TABLE IF EXISTS moneytabletest;
+CREATE TABLE moneytabletest LIKE moneytable;
+ALTER TABLE moneytabletest MODIFY moneyfield fixed(10,2);
+INSERT INTO moneytabletest SELECT * FROM moneytable;
+SELECT A.moneyid,A.moneyfield olddata,B.moneyfield newdata
+FROM moneytable A LEFT JOIN moneytabletest B USING (moneyid)
+WHERE A.moneyfield <> B.moneyfield;
+
+# change the type for the column 
+# How do I change the data type for a column in MySQL?
+#http://dev.mysql.com/doc/refman/5.1/en/alter-table.html
+
+ALTER TABLE tablename MODIFY columnname INTEGER;
+
+#How to convert a column of type TEXT to VARCHAR?
+
+ALTER TABLE table_name MODIFY column_name VARCHAR(X)
+
+
+mysql> SHOW CREATE DATABASE test\G
+
+mysql> SHOW CREATE SCHEMA test\G
+
+#Select all rows that have column value larger than some value
+
+Yes it is possible.
+
+SELECT * FROM MyTable 
+WHERE rank > (SELECT Rank FROM MyTable WHERE username = 'e')
+or you can also use self-join for the same
+
+SELECT t1.* FROM MyTable t1
+  JOIN MyTable t2
+    ON t1.Rank > t2.Rank
+   AND t2.username = 'e';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
