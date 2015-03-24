@@ -30,7 +30,7 @@ a2enmod ssl
 <VirtualHost *:443>
         SSLEngine on
         SSLCertificateFile /var/www/example.com/ssl/ca.crt
-        SSLCertificateKeyFile /var/www/example.com/ssl/ca.crt
+        SSLCertificateKeyFile /var/www/example.com/ssl/ca.key
 #        SSLCertificateChainFile /etc/apache2/exmaple.crt
         ServerName example.com
         DocumentRoot /var/www/example.com/public_html
