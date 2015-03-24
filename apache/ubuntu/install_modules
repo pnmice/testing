@@ -1,0 +1,15 @@
+a php module, pal
+to run php code you need mod_php installed. That's it.
+
+if you're talking of PHP extensions, that's another matter and it's hard do tell. I'd make it this way: log all errors and watch for "undefined function" ones. And turn appropriate extensions on.
+
+It have to be done anyway.
+Legacy code being run on fresh PHP installations usually flood your logs with errors.
+
+
+
+#PHP ImageMagick module
+aptitude install php5-imagick php5-cli
+
+#PHP Memcached module
+aptitude install php5-memcached
