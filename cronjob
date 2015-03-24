@@ -1,0 +1,45 @@
+MIN HOUR DOM MON DOW CMD
+
+
+Table: Crontab Fields and Allowed Ranges (Linux Crontab Syntax)
+Field	Description	Allowed Value
+MIN	Minute field	0 to 59
+HOUR	Hour field	0 to 23
+DOM	Day of Month	1-31
+MON	Month field	1-12
+DOW	Day Of Week	0-6
+CMD	Command	Any command to be executed.
+
+30 08 10 06 * /home/ramesh/full-backup
+
+30 – 30th Minute
+08 – 08 AM
+10 – 10th Day
+06 – 6th Month (June)
+* – Every day of the week
+
+Twice a Day
+00 11,16 * * * /home/ramesh/bin/incremental-backup
+
+00 – 0th Minute (Top of the hour)
+11,16 – 11 AM and 4 PM
+* – Every day
+* – Every month
+* – Every day of the week
+
+Cron Job every weekday during working hours
+00 09-18 * * 1-5 /home/ramesh/bin/check-db-status
+
+00 – 0th Minute (Top of the hour)
+09-18 – 9 am, 10 am,11 am, 12 am, 1 pm, 2 pm, 3 pm, 4 pm, 5 pm, 6 pm
+* – Every day
+* – Every month
+1-5 -Mon, Tue, Wed, Thu and Fri (Every Weekday)
+
+Schedule a Job For First Minute of Every Year using @yearly
+@yearly /home/ramesh/red-hat/bin/annual-maintenance
+@daily /home/ramesh/arch-linux/bin/cleanup-logs "day started"
+
+Crontab HowTo: View Other Linux User’s Crontabs entries
+crontab -u sathiya -l
+
