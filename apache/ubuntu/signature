@@ -3,3 +3,7 @@ vi /etc/apache2/apache2.conf
 
 ServerRoot /usr/local/apache
 ServerSignature On
+
+
+change .htaccess
+ErrorDocument 404 "Sorry, our script crashed. Oh dear"
