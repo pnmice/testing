@@ -76,7 +76,10 @@ SELECT t1.* FROM MyTable t1
     ON t1.Rank > t2.Rank
    AND t2.username = 'e';
 
+If you wanted to convert all the values in the name column to lower case or upper case permanantly, you could do this:
 
+UPDATE mytable SET name = LOWER(name);
+UPDATE mytable SET name = UPPER(name);
 
 
 
