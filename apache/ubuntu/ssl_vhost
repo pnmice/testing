@@ -13,7 +13,9 @@ a2enmod ssl
     DocumentRoot /var/www/example.com/public_html
     ErrorLog /var/www/example.com/logs/error.log
     CustomLog /var/www/example.com/logs/access.log combined
-    ErrorDocument 404 "Fuck"
+    ErrorDocument 404 "Sorry"
+#Riderect
+#    Redirect / https://example.com/
     <Directory /var/www/example.com/public_html>
         AuthType Basic
         AuthName "Secure Content"
