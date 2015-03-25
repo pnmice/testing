@@ -1,7 +1,11 @@
 vim /etc/rsyslog.conf
 *.* @192.168.1.1:514  # remote server
 
-authpriv.*                                /var/log/secure			
-local.log                                  /var/log/secure.log			
-local.debug                               /var/log/secure.debug			
+/etc/rsyslog.conf
+
+CREATE FILES OF LOG
+
+local.!log,!debug                              /var/log/secure			
+local.log                                     /var/log/secure.log			
+local.debug                                   /var/log/secure.debug			
 			
