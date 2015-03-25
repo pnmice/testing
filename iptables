@@ -6,3 +6,7 @@ iptables -A OUTPUT -p icmp --icmp-type echo-reply -j DROP
 
 #block traffic from IP
 iptables -A INPUT -s IP-ADDRESS -j DROP
+
+#redirect
+iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 2022 -j REDIRECT --to-port 22
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 2022 -j DNAT --to-destination :22
