@@ -88,6 +88,10 @@ mysqldump -u USERNAME -pPASSWORD  OLD_DRUPAL_DB_NAME > new_drupal.sql
 Restore
 mysql -u USERNAME -pPASSWORD  DATABASE_NAME < new_database.sql
 
+my.cnf
+bind-address = 0.0.0.0
+
+
 
 
 
