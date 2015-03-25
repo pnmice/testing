@@ -24,11 +24,99 @@ echo 'Cleaning up..'
 #Kill the insecure mysql process
 killall -v mysqld
 
+#see database
+show databases;
+
+#choose database 
+use databasename;
+
+#see tables
+show tables;        
+
+#Backup 
+mysqldump -u USERNAME -pPASSWORD  OLD_DRUPAL_DB_NAME > new_drupal.sql
+
+#Restore
+mysql -u USERNAME -pPASSWORD  DATABASE_NAME < new_database.sql
+
+#my.cnf
+bind-address = 0.0.0.0
+
+#create database
+CREATE DATABASE tutorial_database;
+mysql -u root -e "create database testdb"; 
+mysql -u base_user -pbase_user_pass -e "create database new_db; GRANT ALL PRIVILEGES ON new_db.* TO new_db_user@localhost IDENTIFIED BY 'new_db_user_pass'"
+mysqladmin -u$USER -p$PASSWORD create $DB_NAME
+
+#delete database
+DROP DATABASE database name;
+
+#Let’s create a new MySQL table
+CREATE TABLE potluck (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+name VARCHAR(20),
+food VARCHAR(30),
+confirmed CHAR(1), 
+signup_date DATE);
+
+#see table 
+DESCRIBE potluck;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(20) | YES  |     | NULL    |                |
+| food        | varchar(30) | YES  |     | NULL    |                |
+| confirmed   | char(1)     | YES  |     | NULL    |                |
+| signup_date | date        | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+#How to Add Information to a MySQL Table
+INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "John", "Casserole","Y", '2012-04-11');
+INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "Sandy", "Key Lime Tarts","N", '2012-04-14');
+INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "Tom", "BBQ","Y", '2012-04-18');
+INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "Tina", "Salad","Y", '2012-04-10'); 
+
+#We can take a look at our table
+mysql> SELECT * FROM potluck;
++----+-------+----------------+-----------+-------------+
+| id | name  | food           | confirmed | signup_date |
++----+-------+----------------+-----------+-------------+
+|  1 | John  | Casserole      | Y         | 2012-04-11  |
+|  2 | Sandy | Key Lime Tarts | N         | 2012-04-14  |
+|  3 | Tom   | BBQ            | Y         | 2012-04-18  |
+|  4 | Tina  | Salad          | Y         | 2012-04-10  |
++----+-------+----------------+-----------+-------------+
+4 rows in set (0.00 sec)
+
+#How to Update Information in the Table
+UPDATE `potluck` 
+SET 
+`confirmed` = 'Y' 
+WHERE `potluck`.`name` ='Sandy';
+
+#How to Add and Delete a Column
+ALTER TABLE potluck ADD email VARCHAR(40);
+ALTER TABLE potluck ADD email VARCHAR(40) AFTER name; 
+
+#How to Delete a Row
+DELETE from [table name] where [column name]=[field text];
+mysql> DELETE from potluck  where name='Sandy';
+Query OK, 1 row affected (0.00 sec)
+mysql> SELECT * FROM potluck;
++----+------+-----------+-----------+-------------+
+| id | name | food      | confirmed | signup_date |
++----+------+-----------+-----------+-------------+
+|  1 | John | Casserole | Y         | 2012-04-11  |
+|  3 | Tom  | BBQ       | Y         | 2012-04-18  |
+|  4 | Tina | Salad     | Y         | 2012-04-10  |
++----+------+-----------+-----------+-------------+
+3 rows in set (0.00 sec)
 
 
-show databases;     #see database
-use databasename;   #choose database 
-show tables;        #see tables
+
+
+
 
 
 ALTER TABLE moneytabletest MODIFY moneyfield fixed(10,2);
@@ -82,14 +170,7 @@ UPDATE mytable SET name = LOWER(name);
 UPDATE mytable SET name = UPPER(name);
 
 
-Backup 
-mysqldump -u USERNAME -pPASSWORD  OLD_DRUPAL_DB_NAME > new_drupal.sql
 
-Restore
-mysql -u USERNAME -pPASSWORD  DATABASE_NAME < new_database.sql
-
-my.cnf
-bind-address = 0.0.0.0
 
 
 
