@@ -24,14 +24,7 @@ echo 'Cleaning up..'
 #Kill the insecure mysql process
 killall -v mysqld
 
-#see database
-show databases;
 
-#choose database 
-use databasename;
-
-#see tables
-show tables;        
 
 #Backup 
 mysqldump -u USERNAME -pPASSWORD  OLD_DRUPAL_DB_NAME > new_drupal.sql
@@ -47,6 +40,15 @@ CREATE DATABASE tutorial_database;
 mysql -u root -e "create database testdb"; 
 mysql -u base_user -pbase_user_pass -e "create database new_db; GRANT ALL PRIVILEGES ON new_db.* TO new_db_user@localhost IDENTIFIED BY 'new_db_user_pass'"
 mysqladmin -u$USER -p$PASSWORD create $DB_NAME
+
+#see database
+show databases;
+
+#choose database 
+use databasename;
+
+#see tables
+show tables;        
 
 #delete database
 DROP DATABASE database name;
