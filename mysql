@@ -109,6 +109,25 @@ DESCRIBE potluck;
 +-------------+-------------+------+-----+---------+----------------+
 5 rows in set (0.01 sec)
 
+#see table
+mysql> select * from user;
+#see table
+mysql> select user,password from user;
++------------------+-------------------------------------------+
+| user             | password                                  |
++------------------+-------------------------------------------+
+| root             | *23AE809DDACAF96AF0FD78ED04B6A265E05AA257 |
+| root             | *23AE809DDACAF96AF0FD78ED04B6A265E05AA257 |
+| root             | *23AE809DDACAF96AF0FD78ED04B6A265E05AA257 |
+| root             | *23AE809DDACAF96AF0FD78ED04B6A265E05AA257 |
+| debian-sys-maint | *3DAEDE8BB295D93E34892B18A8824EA18B110B27 |
++------------------+-------------------------------------------+
+
+#dump colunms to txt file 
+mysql> select user,password from user INTO OUTFILE '/tmp/getfields.txt';
+Query OK, 5 rows affected (0.00 sec)
+
+
 #How to Add Information to a MySQL Table
 INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "John", "Casserole","Y", '2012-04-11');
 INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "Sandy", "Key Lime Tarts","N", '2012-04-14');
