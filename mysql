@@ -129,6 +129,7 @@ Query OK, 5 rows affected (0.00 sec)
 
 
 #How to Add Information to a MySQL Table
+INSERT INTO table_name (column1,column2,column3,...) VALUES (value1,value2,value3,...);
 INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "John", "Casserole","Y", '2012-04-11');
 INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "Sandy", "Key Lime Tarts","N", '2012-04-14');
 INSERT INTO `potluck` (`id`,`name`,`food`,`confirmed`,`signup_date`) VALUES (NULL, "Tom", "BBQ","Y", '2012-04-18');
@@ -170,8 +171,8 @@ mysql> SELECT * FROM potluck;
 +----+------+-----------+-----------+-------------+
 3 rows in set (0.00 sec)
 
-
-
+#How to convert a column of type TEXT to VARCHAR?
+ALTER TABLE table_name MODIFY column_name VARCHAR(X)
 
 
 
