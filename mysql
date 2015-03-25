@@ -174,7 +174,11 @@ mysql> SELECT * FROM potluck;
 #How to convert a column of type TEXT to VARCHAR?
 ALTER TABLE table_name MODIFY column_name VARCHAR(X)
 
-
+#SQL CREATE VIEW Syntax
+CREATE VIEW view_name AS       high_red
+SELECT column_name(s)          red
+FROM table_name                color_codes
+WHERE condition                color_codes > 240
 
 
 ALTER TABLE moneytabletest MODIFY moneyfield fixed(10,2);
