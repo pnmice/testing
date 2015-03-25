@@ -25,3 +25,7 @@ a2enmod authz_user
 htpasswd -c /etc/apache2/passwords user1
 htpasswd /etc/apache2/passwords user2
 
+#to md5
+htpasswd -m /var/www/vhosts/admin2/.htpasswd user1
+
+
