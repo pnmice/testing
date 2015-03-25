@@ -9,7 +9,6 @@ Legacy code being run on fresh PHP installations usually flood your logs with er
 
 
 #PHP ImageMagick module
-aptitude install php5-imagick php5-cli
+aptitude install php5-imagick php5-cli memcached php5-memcached
 
-#PHP Memcached module
-aptitude install php5-memcached
+
