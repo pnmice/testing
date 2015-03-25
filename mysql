@@ -43,12 +43,48 @@ mysqladmin -u$USER -p$PASSWORD create $DB_NAME
 
 #see database
 show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
 
 #choose database 
 use databasename;
 
+
 #see tables
 show tables;        
++---------------------------+
+| Tables_in_mysql           |
++---------------------------+
+| columns_priv              |
+| db                        |
+| event                     |
+| func                      |
+| general_log               |
+| help_category             |
+| help_keyword              |
+| help_relation             |
+| help_topic                |
+| host                      |
+| ndb_binlog_index          |
+| plugin                    |
+| proc                      |
+| procs_priv                |
+| proxies_priv              |
+| servers                   |
+| slow_log                  |
+| tables_priv               |
+| time_zone                 |
+| time_zone_leap_second     |
+| time_zone_name            |
+| time_zone_transition      |
+| time_zone_transition_type |
+| user                      |
++---------------------------+
 
 #delete database
 DROP DATABASE database name;
@@ -170,6 +206,13 @@ If you wanted to convert all the values in the name column to lower case or uppe
 
 UPDATE mytable SET name = LOWER(name);
 UPDATE mytable SET name = UPPER(name);
+
+The error 2 is because you should use this path: 'C:/Stuff/dumpfile.sql' instead of 'C:\Stuff\dumpfile.sql'
+
+You could also try 'C:\\Stuff\\dumpfile.sql', but the unix like path it's the way to go.
+
+But the easiest way is this:
+
 
 
 
