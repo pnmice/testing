@@ -1,0 +1,5 @@
+#show me noop
+cat /sys/block/sda/queue/scheduler
+
+#enter noop
+echo noop > /sys/block/sda/queue/scheduler

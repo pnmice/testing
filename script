@@ -1,0 +1,39 @@
+#upper 
+for x in $(ls $dir); do mv "$dir$x" "$dir$(echo "$x" | tr '[a-z]' '[A-Z]')"; done
+
+#lower
+for x in $(ls $dir); do mv "$dir$x" "$dir$(echo "$x" | tr '[A-Z]' '[a-z]')"; done
+
+#move certain file
+mkdir -p $pwd; mv $dir$x $pwd
+
+#remove dublicate
+sort -u $in$x > $out$x
+
+#sockstat TCP huge 
+a=sockstat | cut -d ':' -f2 | cut -d ' ' -f1 | sort -n | tail -1
+#socket name of proccess
+sockstat | grep $a | awk {'print $2$3'}
+
+#create archive
+us=`echo ${USER}`
+da=`date +%Y-%m-%d`
+tar -pczf /home/$us/$us-$da.tar.gz $1
+
+#diff
+for x in $(diff $dir1 $dir2 | grep Files | cut -d ' ' -f2)
+do
+	cp $x /var/
+done
+
+for y in $(diff $dir1 $dir2 | grep Only | cut -d ' ' -f 3,4 | sed 's/: /\//')
+do
+	cp $y /var/
+done
+
+#string, size of byte, date
+file=`grep -q FGHSF $dir$x`
+size=`wc -c $dir$x | cut -d ' ' -f1`
+curdate=`ls -l --time-style=+"%b %e %Y %H:%M" $dir$x | cut -d ' ' -f6,7,8,9`
+echo "$x - $size - $curdate"
+

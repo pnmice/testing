@@ -1,0 +1,6 @@
+#create dir 777 but user only delete files that they created
+
+umask 000 #from root
+mkdir /path/
+
+

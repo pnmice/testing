@@ -1,0 +1,14 @@
+#sudo access to a group
+%programmers    ALL=(ALL) ALL
+
+#certain command
+wer ALL = NOPASSWD: /sbin/ifconfig
+
+#command with arg
+koe ALL=(ALL) NOPASSWD: /full/path/to/command ARG1 ARG2
+
+
+
+
+
+

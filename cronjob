@@ -43,3 +43,5 @@ Schedule a Job For First Minute of Every Year using @yearly
 Crontab HowTo: View Other Linux User’s Crontabs entries
 crontab -u sathiya -l
 
+#11:59pm wednesday
+59 11 * * 3 /bin/php /path/to/your_script.php

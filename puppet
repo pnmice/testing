@@ -1,0 +1,33 @@
+#Create User
+
+user { "tim":
+        ensure     => present,
+        managehome => true,
+        shell      => "/bin/bash",
+}
+
+#Mount file system
+#will mount /mnt
+
+mount { "/mnt/":
+        device  => "/dev/disk.ext2",
+        fstype  => "ext2",
+        ensure  => "mounted",
+        options => "rw",
+    }
+
+#Create file ans dir
+
+file { "/path/";
+	ensure => "directory",
+}
+
+file { "/path/file";
+	path => "/path/file",
+	ensure => "present",
+	content => "word",
+	owner => "root",
+	mode => "0755"
+}		
+
+

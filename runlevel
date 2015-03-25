@@ -1,0 +1,5 @@
+apt-get install chkconfig sysv-rc-conf
+#show conditions
+chkconfig apache2 --list
+sysv-rc-conf
+
