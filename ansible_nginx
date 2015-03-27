@@ -1,0 +1,22 @@
+ - name: config nginx
+    sudo: yes
+    lineinfile:
+      dest: /etc/nginx/sites-enabled/default
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      insertbefore: "{{ item.insertbefore }}"
+    with_items:
+       - { state: 'absent', regexp: 'listen 443', insertbefore: 'listen 80 default_server', line: '\tlisten 443;' }
+       - { state: 'absent', regexp: 'ssl on', insertbefore: 'listen 443', line: '\tssl on;' }
+    
+    
+  - name: cert in conf
+    sudo: yes
+    lineinfile: dest=/etc/nginx/sites-enabled/default line="\tssl_certificate_key /etc/nginx/ssl/ca.key;"  insertbefore='ssl.on.'
+    
+  - name: cert2 in conf
+    sudo: yes
+    lineinfile: dest=/etc/nginx/sites-enabled/default line="\tssl_certificate /etc/nginx/ssl/ca.crt;"  insertbefore='ssl.certificate.key..etc.nginx'
+   
+    notify: 
+      - restart nginx   
