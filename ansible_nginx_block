@@ -1,0 +1,17 @@
+- name: add ssl block in config nginx
+    sudo: yes
+    blockinfile: |
+      dest=/etc/nginx/sites-enabled/default backup=yes
+      marker="# BEGIN ANSIBLE MANAGED BLOCK"
+      content="server {
+                      ssl on;
+                      listen 443;
+                      ssl_certificate_key /etc/nginx/ssl/ca.key;
+                      ssl_certificate /etc/nginx/ssl/ca.crt;
+                      root /usr/share/nginx/html;
+                      index index.html index.htm;
+                      server_name localhost;
+                      location / {
+                      try_files $uri $uri/ /index.html;
+                      }
+               }"
