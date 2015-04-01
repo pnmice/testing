@@ -1,6 +1,12 @@
 apxs2 -i -a -c mod_example.c
 apachectl -t -D DUMP_MODULES
 
+yum install httpd-devel.x86_64
+chmod 755 /usr/lib64/httpd/modules/mod_example_78cee.so
+
+
+
+
 
 vim /etc/apache2/mods-available/status.
 status.conf  status.load
