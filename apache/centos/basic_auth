@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+    ServerName admin3.23.253.225.81.xip.io
+#    ServerAlias www.example.com
+    DocumentRoot /var/www/vhosts/admin3/htdocs
+    <Directory /var/www/vhosts/admin3/htdocs/private>
+        AuthType Basic
+        AuthName "Secure Content"
+        AuthBasicProvider file
+        AuthGroupFile /var/www/vhosts/admin3/.htgroup
+        AuthUserFile /var/www/vhosts/admin3/.htpasswd
+        Require group admins
+    </Directory>
+
+</VirtualHost>
+
+<Location /example-78cee>
+    SetHandler example_78cee
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.1 ::1
+</Location>
