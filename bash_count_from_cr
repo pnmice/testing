@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -o verbose
+set -o xtrace
+
+
+a=$(find ~/test/a -mindepth 4 | cut -f6-9 -d '/' | tr -d '/')
+b=$(find ~/test/b -mindepth 4 | cut -f6-9 -d '/' | tr -d '/')
+
+echo "ibase=2;$a+$b" | bc
+
