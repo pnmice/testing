@@ -1,6 +1,9 @@
 #Test agent  
 puppet agent -t --debug --verbose
 
+#Check certificate  
+puppet cert list --all
+
 
 
 
