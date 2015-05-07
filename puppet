@@ -1,3 +1,15 @@
+#Test agent  
+puppet agent -t --debug --verbose
+
+
+
+
+
+
+
+
+
+
 #Create User
 
 user { "tim":
