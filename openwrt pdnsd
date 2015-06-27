@@ -1,0 +1,25 @@
+global {
+        perm_cache=2048;
+        cache_dir="/var/pdnsd";
+#       pid_file = /var/run/pdnsd.pid;
+#       run_as="nobody";
+        server_port = 5353;
+        server_ip = any;
+        status_ctl = on;
+#       paranoid=on;
+        query_method=tcp_udp;
+        min_ttl=60m; # Retain cached entries at least 15 minutes.
+        max_ttl=1w; # One week.
+        timeout=10; # Global timeout option (10 seconds).
+        neg_domain_pol=on;
+        udpbufsize=1024; # Upper limit on the size of UDP messages.
+}
+
+server {
+        label= "opendns";
+        ip = 205.171.2.65,205.171.3.25,10.0.0.2
+,8.8.8.8,208.67.220.220;
+        port = 5353;
+        root_server = on;
+        uptest = none;
+}
